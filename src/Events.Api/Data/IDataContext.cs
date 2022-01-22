@@ -7,6 +7,7 @@ using EventsApi.Models;
 
 public interface IDataContext
 {
-    DbSet<Event> Events { get; init; }
+    DbSet<Event> Events { get; }
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

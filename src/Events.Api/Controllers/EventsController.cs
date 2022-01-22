@@ -11,29 +11,32 @@ using EventsApi.Repositories;
 [Route("[controller]")]
 public class EventsController : ControllerBase
 {
-    private readonly IEventRepository _eventRepository;
-    public EventsController(IEventRepository eventRepository) {
-        _eventRepository = eventRepository;
-    }
+    private readonly IEventRepository repository;
+    public EventsController(IEventRepository repository) =>
+        this.repository = repository;
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Event>> GetEvent(int id) {
-        var evnt = await _eventRepository.Get(id);
-        if(evnt == null)
-            return NotFound();
-
-        return Ok(evnt);
+    public async Task<ActionResult<Event>> GetEvent(int id)
+    {
+        var @event = await repository.Get(id);
+        return @event switch
+        {
+            null => NotFound(),
+            _ => Ok(@event)
+        };
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Event>>> GetEvents() {
-        var events = await _eventRepository.GetAll();
+    public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
+    {
+        var events = await repository.GetAll();
         return Ok(events);
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateEvent(CreateEventDto createEventDto) {
-        Event evnt = new()
+    public async Task<ActionResult> CreateEvent(CreateEventDto createEventDto)
+    {
+        Event @event = new()
         {
             Name = createEventDto.Name,
             Description = createEventDto.Description,
@@ -44,20 +47,21 @@ public class EventsController : ControllerBase
             EventPlace = createEventDto.EventPlace
         };
 
-        await _eventRepository.Add(evnt);
+        await repository.Add(@event);
         return Ok();
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteEvent(int id) {
-        await _eventRepository.Delete(id);
+    public async Task<ActionResult> DeleteEvent(int id)
+    {
+        await repository.Delete(id);
         return Ok();
     }
 
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateProduct(int id, UpdateEventDto updateEventDto)
     {
-        Event evnt = new()
+        Event @event = new()
         {
             EventId = id,
             Name = updateEventDto.Name,
@@ -69,7 +73,7 @@ public class EventsController : ControllerBase
             EventPlace = updateEventDto.EventPlace
         };
 
-        await _eventRepository.Update(evnt);
+        await repository.Update(@event);
         return Ok();
     }
 }
