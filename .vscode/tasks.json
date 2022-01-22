@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/EventsApi.csproj",
+                "${workspaceFolder}/src/Events.Api/EventsApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/EventsApi.csproj",
+                "${workspaceFolder}/src/Events.Api/EventsApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/EventsApi.csproj"
+                "${workspaceFolder}/src/Events.Api/EventsApi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
