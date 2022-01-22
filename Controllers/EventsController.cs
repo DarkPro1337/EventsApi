@@ -41,7 +41,7 @@ namespace EventsApi.Controllers
                 Plan = createEventDto.Plan,
                 Organizer = createEventDto.Organizer,
                 Speaker = createEventDto.Speaker,
-                EventTime = DateTime.Now,
+                EventTime = createEventDto.EventTime,
                 EventPlace = createEventDto.EventPlace
             };
     

@@ -4,8 +4,7 @@ using EventsApi.Models;
 
 namespace EventsApi.Repositories
 {
-    public interface IEventRepository
-    {
+    public interface IEventRepository {
         Task<Event> Get(int id);
         Task<IEnumerable<Event>> GetAll();
         Task Add(Event evnt);

@@ -48,7 +48,6 @@ namespace EventsApi.Repositories
             itemToUpdate.EventTime = evnt.EventTime;
             itemToUpdate.EventPlace = evnt.EventPlace;
             await _context.SaveChangesAsync();
-    
         }
     }
 }
