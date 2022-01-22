@@ -30,5 +30,5 @@
 3. Создайте в PGAdmin новый сервер, во вкладке `General` укажите название `EventsDb`, во `Connection` укажите данные для подключения из `docker-compose.yml`.
    ![Настройка сервера в PGAdmin](img/pgadmin_setup.png)
 4. Если вы не устанавливали ранее пакет `EntityFrameworkCore.Design` выполните `dotnet tool install --global dotnet-ef`.
-5. Выполняем `dotnet ef database update` в корне репозитория, для обновления базы данных PostgreSQL через `InitialMigration`.
+5. Выполняем `dotnet ef database update -p .\src\Events.Api\EventsApi.csproj` в корне репозитория, для обновления базы данных PostgreSQL через `InitialMigration`.
 6. Запускаем проект.
