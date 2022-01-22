@@ -1,6 +1,6 @@
 # EventsApi
 
-![EventsApi Swagger UI](tn.png)
+![EventsApi Swagger UI](img/swagger-ui.png)
 
 ## Описание
 Разработка CRUD Web API для работы с мероприятиями (создание, изменение, удаление, получение), выполняется на ASP .Net Core, с использованием EF Core.
